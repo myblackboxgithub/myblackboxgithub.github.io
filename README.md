@@ -1,1 +1,0 @@
-![alt tag](https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSY4Zfre68NbdfaW4HeQLY8NI7buwfKVCFRCvJQMnTCFT75LfGJ)
