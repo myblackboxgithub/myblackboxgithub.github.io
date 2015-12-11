@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>MANTASNESS</Machine>
+    <WindowsUser>Mantas</WindowsUser>
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <TargetOsVersion>6.3</TargetOsVersion>
+    <TargetOsDescription>Windows Phone 8.1</TargetOsDescription>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>227c0b3a-7fb4-4bab-ad34-1246740cac76</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\obj\Debug\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\bin\Debug\Notification_v6.0.exe">
+      <PackagePath>Notification_v6.0.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\packages\WindowsAzure.Messaging.Managed.0.1.7.9\lib\wpa81\Microsoft.WindowsAzure.Messaging.Managed.dll">
+      <PackagePath>Microsoft.WindowsAzure.Messaging.Managed.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\packages\Microsoft.Net.Http.2.2.29\lib\wpa81\System.Net.Http.Extensions.dll">
+      <PackagePath>System.Net.Http.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\packages\Microsoft.Net.Http.2.2.29\lib\wpa81\System.Net.Http.Primitives.dll">
+      <PackagePath>System.Net.Http.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\Assets\Logo.scale-240.png">
+      <PackagePath>Assets\Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\Assets\SmallLogo.scale-240.png">
+      <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\Assets\SplashScreen.scale-240.png">
+      <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\Assets\Square71x71Logo.scale-240.png">
+      <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\Assets\StoreLogo.scale-240.png">
+      <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\Assets\WideLogo.scale-240.png">
+      <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\bin\Debug\Notification_v6.0.xr.xml">
+      <PackagePath>Notification_v6.0.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mantas\Documents\IT SLIGO\Year3\Windows Phone\Notification_v6.0\Notification_v6.0\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
