@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>DESKTOP-EAHHAC3</Machine>
+    <WindowsUser>Andrius</WindowsUser>
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <TargetOsVersion>6.3</TargetOsVersion>
+    <TargetOsDescription>Windows Phone 8.1</TargetOsDescription>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>6228b21c-98f2-4680-923b-5a027ecc6b64</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\obj\Debug\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\bin\Debug\UI.WindowsPhone.exe">
+      <PackagePath>UI.WindowsPhone.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\Assets\Logo.scale-240.png">
+      <PackagePath>Assets\Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\Assets\SmallLogo.scale-240.png">
+      <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\Assets\SplashScreen.scale-240.png">
+      <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\Assets\Square71x71Logo.scale-240.png">
+      <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\Assets\StoreLogo.scale-240.png">
+      <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\Assets\WideLogo.scale-240.png">
+      <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\Images\MyBlackBox-Icon2-23di89p-300x257.jpg">
+      <PackagePath>Images\MyBlackBox-Icon2-23di89p-300x257.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\bin\Debug\UI.WindowsPhone.xr.xml">
+      <PackagePath>UI.WindowsPhone.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\bin\Debug\Close.xbf">
+      <PackagePath>Close.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\bin\Debug\Menu.xbf">
+      <PackagePath>Menu.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\bin\Debug\Settings1.xbf">
+      <PackagePath>Settings1.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\bin\Debug\YourAccount.xbf">
+      <PackagePath>YourAccount.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

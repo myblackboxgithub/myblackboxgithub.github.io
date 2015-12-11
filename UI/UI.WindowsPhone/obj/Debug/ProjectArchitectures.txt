@@ -1,0 +1,1 @@
+C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.WindowsPhone\UI.WindowsPhone.csproj;neutral

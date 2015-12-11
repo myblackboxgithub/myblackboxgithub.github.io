@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="UI.YourAccount"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="idBtn">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Your Account" VerticalAlignment="Top" Height="58" Width="201" FontSize="32"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="246" PlaceholderText="Choose who are you">
+            <ComboBoxItem Content="Patient"/>
+            <ComboBoxItem Content="Carer"/>
+        </ComboBox>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,131,0,0" TextWrapping="Wrap" Text="Please Enter Your Name ( Name is required if your first time register )" VerticalAlignment="Top" Height="71" Width="218" FontSize="16"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="10,207,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="246"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,268,0,0" TextWrapping="Wrap" Text="Please enter your ID number to Log In to your existing profile. You can find ID in email that was send to you when registered last time. This will allow full access to details of both phones. " VerticalAlignment="Top" Height="101" Width="380" FontSize="16"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="10,374,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="246" Height="68"/>
+        <Button x:ConnectionId='1' x:Name="button" Content="Log In" HorizontalAlignment="Left" Margin="266,582,0,0" VerticalAlignment="Top"                     />
+        <Button x:ConnectionId='2' x:Name="idBtn1" Content="Get ID" HorizontalAlignment="Left" Margin="10,453,0,0" VerticalAlignment="Top"                     />
+
+    </Grid>
+</Page>
+

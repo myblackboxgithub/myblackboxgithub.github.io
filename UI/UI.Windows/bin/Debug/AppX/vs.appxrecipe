@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>DESKTOP-EAHHAC3</Machine>
+    <WindowsUser>Andrius</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetOsVersion>6.3</TargetOsVersion>
+    <TargetOsDescription>Windows 8.1</TargetOsDescription>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>ad7ec4b8-dbaa-404d-845a-19205222b7c5</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.Windows\obj\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>CABD12E3FD40CF2617490D0F74A42D3456E34934AFF4963CEABC9D9F5F9731B1</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>ad7ec4b8-dbaa-404d-845a-19205222b7c5_1.0.0.0_neutral__vwn3bdnnar8a6</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>ad7ec4b8-dbaa-404d-845a-19205222b7c5_vwn3bdnnar8a6!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>ad7ec4b8-dbaa-404d-845a-19205222b7c5</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Andrius</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.Windows\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-11-12T21:08:57.773</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.Windows\bin\Debug\UI.Windows.exe">
+      <PackagePath>UI.Windows.exe</PackagePath>
+      <Modified>2015-11-12T21:08:56.201</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.Windows\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-07-06T21:01:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.Windows\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-07-06T21:01:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.Windows\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-07-06T21:01:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.Windows\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-07-06T21:01:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.Windows\bin\Debug\UI.Windows.xr.xml">
+      <PackagePath>UI.Windows.xr.xml</PackagePath>
+      <Modified>2015-11-12T21:08:55.037</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.Windows\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2015-11-12T21:08:55.682</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.Windows\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+      <Modified>2015-11-12T21:08:55.688</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Andrius\Desktop\myBlackBox\UI\UI\UI.Windows\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2015-11-12T21:08:56.910</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
