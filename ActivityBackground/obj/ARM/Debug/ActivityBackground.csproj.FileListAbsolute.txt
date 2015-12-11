@@ -70,3 +70,27 @@ C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\o
 C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\qualifiers.txt
 C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\qualifiers.txt.intermediate
 C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\GitHub\MyBlackBox\ActivityBackground\bin\ARM\Debug\ActivityBackground.winmd
+C:\GitHub\MyBlackBox\ActivityBackground\bin\ARM\Debug\ActivityBackground.pdb
+C:\GitHub\MyBlackBox\ActivityBackground\bin\ARM\Debug\ActivityBackground.pri
+C:\GitHub\MyBlackBox\ActivityBackground\bin\ARM\Debug\Lumia.Sense.winmd
+C:\GitHub\MyBlackBox\ActivityBackground\bin\ARM\Debug\Lumia.Internal.HMBClient.winmd
+C:\GitHub\MyBlackBox\ActivityBackground\bin\ARM\Debug\Lumia.Sense.dll
+C:\GitHub\MyBlackBox\ActivityBackground\bin\ARM\Debug\Lumia.Sense.xml
+C:\GitHub\MyBlackBox\ActivityBackground\bin\ARM\Debug\Lumia.Internal.HMBClient.dll
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\ActivityBackground.csprojResolveAssemblyReference.cache
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\ActivityBackground.winmd
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\ActivityBackground.pdb
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\ActivityBackground.winmdobj
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\ActivityBackground.compile.pdb
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\priconfig.xml
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\priconfig.xml.intermediate
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\layout.resfiles
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\layout.resfiles.intermediate
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\resources.resfiles
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\resources.resfiles.intermediate
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\pri.resfiles
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\pri.resfiles.intermediate
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\qualifiers.txt
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\qualifiers.txt.intermediate
+C:\GitHub\MyBlackBox\ActivityBackground\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt

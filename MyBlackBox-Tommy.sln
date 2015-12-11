@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlackBox", "MyActivities\MyBlackBox.csproj", "{A1249CE9-E1F9-473F-A707-18B1BFD14B7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundTask", "BackgroundTask\BackgroundTask.csproj", "{20FD3864-E03A-49AB-AE6E-079B22D61EFC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityBackground", "ActivityBackground\ActivityBackground.csproj", "{AAC19554-0C85-424E-9E03-BD296DB0A3A1}"
 EndProject
 Global
@@ -37,18 +35,6 @@ Global
 		{A1249CE9-E1F9-473F-A707-18B1BFD14B7C}.Release|x86.ActiveCfg = Release|x86
 		{A1249CE9-E1F9-473F-A707-18B1BFD14B7C}.Release|x86.Build.0 = Release|x86
 		{A1249CE9-E1F9-473F-A707-18B1BFD14B7C}.Release|x86.Deploy.0 = Release|x86
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Debug|ARM.Build.0 = Debug|Any CPU
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Debug|x86.Build.0 = Debug|Any CPU
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Release|ARM.ActiveCfg = Release|Any CPU
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Release|ARM.Build.0 = Release|Any CPU
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Release|x86.ActiveCfg = Release|Any CPU
-		{20FD3864-E03A-49AB-AE6E-079B22D61EFC}.Release|x86.Build.0 = Release|Any CPU
 		{AAC19554-0C85-424E-9E03-BD296DB0A3A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AAC19554-0C85-424E-9E03-BD296DB0A3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAC19554-0C85-424E-9E03-BD296DB0A3A1}.Debug|ARM.ActiveCfg = Debug|ARM

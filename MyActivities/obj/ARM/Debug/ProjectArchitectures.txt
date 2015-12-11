@@ -1,2 +1,2 @@
-C:\Users\TomTom\Desktop\databindingtest - 10-12-git - Copy\ActivityBackground\ActivityBackground.csproj;arm
-C:\Users\TomTom\Desktop\databindingtest - 10-12-git - Copy\MyActivities\MyBlackBox.csproj;arm
+C:\GitHub\MyBlackBox\ActivityBackground\ActivityBackground.csproj;arm
+C:\GitHub\MyBlackBox\MyActivities\MyBlackBox.csproj;arm

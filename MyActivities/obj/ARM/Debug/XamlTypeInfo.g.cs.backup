@@ -13,13 +13,13 @@ namespace MyActivities
 {
     public partial class App : global::Windows.UI.Xaml.Markup.IXamlMetadataProvider
     {
-        private global::MyActivities.MyActivities_XamlTypeInfo.XamlTypeInfoProvider _provider;
+        private global::MyActivities.MyBlackBox_XamlTypeInfo.XamlTypeInfoProvider _provider;
 
         public global::Windows.UI.Xaml.Markup.IXamlType GetXamlType(global::System.Type type)
         {
             if(_provider == null)
             {
-                _provider = new global::MyActivities.MyActivities_XamlTypeInfo.XamlTypeInfoProvider();
+                _provider = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlTypeInfoProvider();
             }
             return _provider.GetXamlTypeByType(type);
         }
@@ -28,7 +28,7 @@ namespace MyActivities
         {
             if(_provider == null)
             {
-                _provider = new global::MyActivities.MyActivities_XamlTypeInfo.XamlTypeInfoProvider();
+                _provider = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlTypeInfoProvider();
             }
             return _provider.GetXamlTypeByName(fullName);
         }
@@ -40,7 +40,7 @@ namespace MyActivities
     }
 }
 
-namespace MyActivities.MyActivities_XamlTypeInfo
+namespace MyActivities.MyBlackBox_XamlTypeInfo
 {
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks", "4.0.0.0")]    
@@ -201,8 +201,8 @@ namespace MyActivities.MyActivities_XamlTypeInfo
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
-            global::MyActivities.MyActivities_XamlTypeInfo.XamlSystemBaseType xamlType = null;
-            global::MyActivities.MyActivities_XamlTypeInfo.XamlUserType userType;
+            global::MyActivities.MyBlackBox_XamlTypeInfo.XamlSystemBaseType xamlType = null;
+            global::MyActivities.MyBlackBox_XamlTypeInfo.XamlUserType userType;
             string typeName = _typeNameTable[typeIndex];
             global::System.Type type = _typeTable[typeIndex];
 
@@ -210,47 +210,47 @@ namespace MyActivities.MyActivities_XamlTypeInfo
             {
 
             case 0:   //  MyActivities.Converters.TimeSpanToString
-                userType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_0_TimeSpanToString;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
             case 1:   //  Object
-                xamlType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                xamlType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
             case 2:   //  MyActivities.Converters.DateTimeToDateTimeOffsetConverter
-                userType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_2_DateTimeToDateTimeOffsetConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
             case 3:   //  MyActivities.Converters.TimeWindowToString
-                userType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_3_TimeWindowToString;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
             case 4:   //  MyActivities.MainPage
-                userType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_4_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
             case 5:   //  Windows.UI.Xaml.Controls.Page
-                xamlType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                xamlType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
             case 6:   //  Windows.UI.Xaml.Controls.UserControl
-                xamlType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                xamlType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
             case 7:   //  MyActivities.ViewDetails
-                userType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_7_ViewDetails;
                 userType.AddMemberName("NavigationHelper");
                 userType.AddMemberName("DefaultViewModel");
@@ -259,18 +259,18 @@ namespace MyActivities.MyActivities_XamlTypeInfo
                 break;
 
             case 8:   //  MyActivities.Common.NavigationHelper
-                userType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
+                userType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
             case 9:   //  Windows.UI.Xaml.DependencyObject
-                xamlType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                xamlType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
             case 10:   //  MyActivities.Common.ObservableDictionary
-                userType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.DictionaryAdd = MapAdd_10_ObservableDictionary;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
@@ -278,7 +278,7 @@ namespace MyActivities.MyActivities_XamlTypeInfo
                 break;
 
             case 11:   //  String
-                xamlType = new global::MyActivities.MyActivities_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                xamlType = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
             return xamlType;
@@ -298,20 +298,20 @@ namespace MyActivities.MyActivities_XamlTypeInfo
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
-            global::MyActivities.MyActivities_XamlTypeInfo.XamlMember xamlMember = null;
-            global::MyActivities.MyActivities_XamlTypeInfo.XamlUserType userType;
+            global::MyActivities.MyBlackBox_XamlTypeInfo.XamlMember xamlMember = null;
+            global::MyActivities.MyBlackBox_XamlTypeInfo.XamlUserType userType;
 
             switch (longMemberName)
             {
             case "MyActivities.ViewDetails.NavigationHelper":
-                userType = (global::MyActivities.MyActivities_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyActivities.ViewDetails");
-                xamlMember = new global::MyActivities.MyActivities_XamlTypeInfo.XamlMember(this, "NavigationHelper", "MyActivities.Common.NavigationHelper");
+                userType = (global::MyActivities.MyBlackBox_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyActivities.ViewDetails");
+                xamlMember = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlMember(this, "NavigationHelper", "MyActivities.Common.NavigationHelper");
                 xamlMember.Getter = get_0_ViewDetails_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
             case "MyActivities.ViewDetails.DefaultViewModel":
-                userType = (global::MyActivities.MyActivities_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyActivities.ViewDetails");
-                xamlMember = new global::MyActivities.MyActivities_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "MyActivities.Common.ObservableDictionary");
+                userType = (global::MyActivities.MyBlackBox_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyActivities.ViewDetails");
+                xamlMember = new global::MyActivities.MyBlackBox_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "MyActivities.Common.ObservableDictionary");
                 xamlMember.Getter = get_1_ViewDetails_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
@@ -371,9 +371,9 @@ namespace MyActivities.MyActivities_XamlTypeInfo
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks", "4.0.0.0")]    
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    internal class XamlUserType : global::MyActivities.MyActivities_XamlTypeInfo.XamlSystemBaseType
+    internal class XamlUserType : global::MyActivities.MyBlackBox_XamlTypeInfo.XamlSystemBaseType
     {
-        global::MyActivities.MyActivities_XamlTypeInfo.XamlTypeInfoProvider _provider;
+        global::MyActivities.MyBlackBox_XamlTypeInfo.XamlTypeInfoProvider _provider;
         global::Windows.UI.Xaml.Markup.IXamlType _baseType;
         bool _isArray;
         bool _isMarkupExtension;
@@ -387,7 +387,7 @@ namespace MyActivities.MyActivities_XamlTypeInfo
         global::System.Collections.Generic.Dictionary<string, string> _memberNames;
         global::System.Collections.Generic.Dictionary<string, object> _enumValues;
 
-        public XamlUserType(global::MyActivities.MyActivities_XamlTypeInfo.XamlTypeInfoProvider provider, string fullName, global::System.Type fullType, global::Windows.UI.Xaml.Markup.IXamlType baseType)
+        public XamlUserType(global::MyActivities.MyBlackBox_XamlTypeInfo.XamlTypeInfoProvider provider, string fullName, global::System.Type fullType, global::Windows.UI.Xaml.Markup.IXamlType baseType)
             :base(fullName, fullType)
         {
             _provider = provider;
@@ -580,7 +580,7 @@ namespace MyActivities.MyActivities_XamlTypeInfo
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     internal class XamlMember : global::Windows.UI.Xaml.Markup.IXamlMember
     {
-        global::MyActivities.MyActivities_XamlTypeInfo.XamlTypeInfoProvider _provider;
+        global::MyActivities.MyBlackBox_XamlTypeInfo.XamlTypeInfoProvider _provider;
         string _name;
         bool _isAttachable;
         bool _isDependencyProperty;
@@ -589,7 +589,7 @@ namespace MyActivities.MyActivities_XamlTypeInfo
         string _typeName;
         string _targetTypeName;
 
-        public XamlMember(global::MyActivities.MyActivities_XamlTypeInfo.XamlTypeInfoProvider provider, string name, string typeName)
+        public XamlMember(global::MyActivities.MyBlackBox_XamlTypeInfo.XamlTypeInfoProvider provider, string name, string typeName)
         {
             _name = name;
             _typeName = typeName;

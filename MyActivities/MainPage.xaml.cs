@@ -146,7 +146,7 @@ namespace MyActivities
 
 
 
-            //await Register_BackgroundTask();
+            await Register_BackgroundTask();
         }
 
 
@@ -197,7 +197,9 @@ namespace MyActivities
             builder.SetTrigger(trigger);
             builder.Register();
 
-            await (new MessageDialog("My 2 hour background task added")).ShowAsync();
+
+
+            //await (new MessageDialog("My 2 hour background task added")).ShowAsync();
         }
 
 
@@ -232,7 +234,7 @@ namespace MyActivities
         {
             ActivityReader.Instance().PreviousDay();
             btnNext.IsEnabled = true;
-            btnPrevious.IsEnabled = ActivityReader.Instance().TimeWindow > -30;
+            btnPrevious.IsEnabled = ActivityReader.Instance().TimeWindow > -10;
             PollHistory(ActivityReader.Instance().TimeWindow);
         }
 
