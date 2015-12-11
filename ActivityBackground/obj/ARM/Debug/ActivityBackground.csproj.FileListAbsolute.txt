@@ -1,0 +1,72 @@
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\bin\ARM\Debug\ActivityBackground.winmd
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\bin\ARM\Debug\ActivityBackground.pdb
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\bin\ARM\Debug\ActivityBackground.pri
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\bin\ARM\Debug\Lumia.Sense.winmd
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\bin\ARM\Debug\Lumia.Internal.HMBClient.winmd
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\bin\ARM\Debug\Lumia.Sense.dll
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\bin\ARM\Debug\Lumia.Sense.xml
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\bin\ARM\Debug\Lumia.Internal.HMBClient.dll
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\ActivityBackground.winmd
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\ActivityBackground.pdb
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\ActivityBackground.winmdobj
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\ActivityBackground.compile.pdb
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\priconfig.xml
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\priconfig.xml.intermediate
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\layout.resfiles
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\layout.resfiles.intermediate
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\resources.resfiles
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\resources.resfiles.intermediate
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\pri.resfiles
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\pri.resfiles.intermediate
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\qualifiers.txt
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\qualifiers.txt.intermediate
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\TomTom\Desktop\databindingtest\ActivityBackground\obj\ARM\Debug\ActivityBackground.csprojResolveAssemblyReference.cache
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\bin\ARM\Debug\ActivityBackground.winmd
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\bin\ARM\Debug\ActivityBackground.pdb
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\bin\ARM\Debug\ActivityBackground.pri
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\bin\ARM\Debug\Lumia.Sense.winmd
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\bin\ARM\Debug\Lumia.Internal.HMBClient.winmd
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\bin\ARM\Debug\Lumia.Sense.dll
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\bin\ARM\Debug\Lumia.Sense.xml
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\bin\ARM\Debug\Lumia.Internal.HMBClient.dll
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\ActivityBackground.csprojResolveAssemblyReference.cache
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\ActivityBackground.winmd
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\ActivityBackground.pdb
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\ActivityBackground.winmdobj
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\ActivityBackground.compile.pdb
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\priconfig.xml
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\priconfig.xml.intermediate
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\layout.resfiles
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\layout.resfiles.intermediate
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\resources.resfiles
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\resources.resfiles.intermediate
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\pri.resfiles
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\pri.resfiles.intermediate
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\qualifiers.txt
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\qualifiers.txt.intermediate
+C:\Users\TomTom\Desktop\databindingtest - try1\ActivityBackground\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\bin\ARM\Debug\ActivityBackground.winmd
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\bin\ARM\Debug\ActivityBackground.pdb
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\bin\ARM\Debug\ActivityBackground.pri
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\bin\ARM\Debug\Lumia.Sense.winmd
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\bin\ARM\Debug\Lumia.Internal.HMBClient.winmd
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\bin\ARM\Debug\Lumia.Sense.dll
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\bin\ARM\Debug\Lumia.Sense.xml
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\bin\ARM\Debug\Lumia.Internal.HMBClient.dll
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\ActivityBackground.csprojResolveAssemblyReference.cache
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\ActivityBackground.winmd
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\ActivityBackground.pdb
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\ActivityBackground.winmdobj
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\ActivityBackground.compile.pdb
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\priconfig.xml
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\priconfig.xml.intermediate
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\layout.resfiles
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\layout.resfiles.intermediate
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\resources.resfiles
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\resources.resfiles.intermediate
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\pri.resfiles
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\pri.resfiles.intermediate
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\qualifiers.txt
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\qualifiers.txt.intermediate
+C:\Users\TomTom\Desktop\databindingtest - try1 - 23-11-2015\ActivityBackground\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
