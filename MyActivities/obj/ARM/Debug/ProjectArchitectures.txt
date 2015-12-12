@@ -1,0 +1,2 @@
+F:\mine\ActivityBackground\ActivityBackground.csproj;arm
+F:\mine\MyActivities\MyBlackBox.csproj;arm
