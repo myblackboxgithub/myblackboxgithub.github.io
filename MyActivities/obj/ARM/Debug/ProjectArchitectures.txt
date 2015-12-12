@@ -1,0 +1,2 @@
+C:\GitHub\MyBlackBox\ActivityBackground\ActivityBackground.csproj;arm
+C:\GitHub\MyBlackBox\MyActivities\MyBlackBox.csproj;arm
