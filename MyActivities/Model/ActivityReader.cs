@@ -317,7 +317,7 @@ namespace MyActivities.Model
                         Activity currentActivity = _historyData[0].Mode;
                         DateTime currentDate = _historyData[0].Timestamp.DateTime;
 
-                        for (int index = 1; index < _historyData.Count - 1; index++)
+                        for (int index = 1; index < _historyData.Count; index++)
                         {
                             var item = _historyData[index];
 
@@ -328,6 +328,9 @@ namespace MyActivities.Model
                             {
                                 duration = item.Timestamp - currentDate;
                                 activitySummaryHours[TimeSpan.FromHours(hour)][currentActivity] += duration;
+
+                                currentActivity = item.Mode;
+                                currentDate = item.Timestamp.DateTime;
                             }
                             else
                             {
@@ -342,11 +345,12 @@ namespace MyActivities.Model
                                 duration = addedHour.Timestamp - previousEvent.Timestamp;
                                 activitySummaryHours[TimeSpan.FromHours(hour)][previousEvent.Mode] += duration;
 
+                                currentActivity = addedHour.Mode;
+                                currentDate = addedHour.Timestamp.DateTime;
+
                                 hour++;
                                 if (hour == 25) break;
                             }
-                            currentActivity = item.Mode;
-                            currentDate = item.Timestamp.DateTime;
                         }
                     }
                 }
