@@ -34,8 +34,10 @@ namespace Notification_v6._0
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
-        }
 
+           
+        }
+       
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
@@ -57,15 +59,7 @@ namespace Notification_v6._0
             {
                 await sendPush("wns", ToUserTagTextBox.Text, this.NotificationMessageTextBox.Text);
             }
-            if (toggleGCM.IsChecked.Value)
-            {
-                await sendPush("gcm", ToUserTagTextBox.Text, this.NotificationMessageTextBox.Text);
-            }
-            if (toggleAPNS.IsChecked.Value)
-            {
-                await sendPush("apns", ToUserTagTextBox.Text, this.NotificationMessageTextBox.Text);
-
-            }
+           
         }
 
         private async Task sendPush(string pns, string userTag, string message)
