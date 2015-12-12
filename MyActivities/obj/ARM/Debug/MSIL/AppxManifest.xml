@@ -55,45 +55,45 @@
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
         <Path>Lumia.Internal.HMBClient.dll</Path>
+        <ActivatableClass ActivatableClassId="Lumia.Internal.HMBClient.HMBMessage" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Lumia.Internal.HMBClient.HMBMessageEventArgs" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Lumia.Internal.HMBClient.HMBServiceClient" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="Lumia.Internal.HMBClient.HMBMessage" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
         <Path>Lumia.Sense.Testing.dll</Path>
-        <ActivatableClass ActivatableClassId="Lumia.Sense.Testing.TrackPointMonitorSimulator" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="Lumia.Sense.Testing.PlaceMonitorSimulator" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="Lumia.Sense.Testing.SenseRecorder" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="Lumia.Sense.Testing.SenseRecording" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="Lumia.Sense.Testing.ActivityMonitorSimulator" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Lumia.Sense.Testing.StepCounterSimulator" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.Testing.ActivityMonitorSimulator" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.Testing.PlaceMonitorSimulator" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.Testing.SenseRecording" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.Testing.TrackPointMonitorSimulator" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.Testing.SenseRecorder" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
         <Path>Lumia.Sense.dll</Path>
-        <ActivatableClass ActivatableClassId="Lumia.Sense.MotionDataSettings" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.TrackPoint" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.ActivityMonitor" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Lumia.Sense.ActivityMonitorReading" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="Lumia.Sense.SenseHelper" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="Lumia.Sense.StepCounter" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Lumia.Sense.TrackPointMonitor" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="Lumia.Sense.StepCounterReading" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Lumia.Sense.SenseTrigger" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="Lumia.Sense.Place" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.MotionDataSettings" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.StepCounter" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Lumia.Sense.PlaceMonitor" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="Lumia.Sense.StepCount" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="Lumia.Sense.ActivityMonitor" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="Lumia.Sense.TrackPoint" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.StepCounterReading" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.SenseHelper" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Lumia.Sense.Place" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
   </Extensions>
   <build:Metadata>
     <build:Item Name="TargetFrameworkMoniker" Value="WindowsPhoneApp,Version=v8.1" />
     <build:Item Name="VisualStudio" Version="14.0" />
-    <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2015" />
-    <build:Item Name="OperatingSystem" Version="6.3.9600.16384 (winblue_rtm.130821-1623)" />
+    <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Enterprise 2015" />
+    <build:Item Name="OperatingSystem" Version="10.0.10240.16384 (th1.150709-1700)" />
     <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="14.0.23315.0" />
     <build:Item Name="ProjectGUID" Value="{A1249CE9-E1F9-473F-A707-18B1BFD14B7C}" />
     <build:Item Name="Microsoft.Windows.UI.Xaml.81.Build.Tasks.dll" Version="14.0.22705.1" />
