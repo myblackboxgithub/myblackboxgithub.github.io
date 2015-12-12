@@ -1,93 +1,93 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>MANTASNESS</Machine>
-    <WindowsUser>Mantas</WindowsUser>
+    <Machine>DESKTOP-BDP7PK2</Machine>
+    <WindowsUser>TomTom</WindowsUser>
     <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
     <TargetOsVersion>6.3</TargetOsVersion>
     <TargetOsDescription>Windows Phone 8.1</TargetOsDescription>
     <SolutionConfiguration>Debug|ARM</SolutionConfiguration>
     <PackageArchitecture>arm</PackageArchitecture>
     <PackageIdentityName>c4fc6ab8-13e6-4a3e-bf0b-a6ffb0ed6bce</PackageIdentityName>
-    <IntermediateOutputPath>F:\mine\MyActivities\obj\ARM\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\GitHub\MyBlackBox\MyActivities\obj\ARM\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="F:\mine\MyActivities\bin\ARM\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\GitHub\MyBlackBox\MyActivities\bin\ARM\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="F:\mine\MyActivities\bin\ARM\Debug\MyActivities.exe">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\bin\ARM\Debug\MyActivities.exe">
       <PackagePath>MyActivities.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\ActivityBackground\bin\ARM\Debug\ActivityBackground.winmd">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\ActivityBackground\bin\ARM\Debug\ActivityBackground.winmd">
       <PackagePath>ActivityBackground.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\packages\LumiaSensorCoreSDKUWP.1.2.0.127\lib\portable-wpa81+wp81\ARM\Lumia.Internal.HMBClient.winmd">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\packages\LumiaSensorCoreSDKUWP.1.2.0.127\lib\portable-wpa81+wp81\ARM\Lumia.Internal.HMBClient.winmd">
       <PackagePath>Lumia.Internal.HMBClient.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\packages\LumiaSensorCoreSDKTestingUWP.1.2.0.127\build\wpa81\\..\..\lib\portable-wpa81+wp81\ARM\Lumia.Sense.Testing.winmd">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\packages\LumiaSensorCoreSDKTestingUWP.1.2.0.127\build\wpa81\\..\..\lib\portable-wpa81+wp81\ARM\Lumia.Sense.Testing.winmd">
       <PackagePath>Lumia.Sense.Testing.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\packages\LumiaSensorCoreSDKUWP.1.2.0.127\build\wpa81\\..\..\lib\portable-wpa81+wp81\ARM\Lumia.Sense.winmd">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\packages\LumiaSensorCoreSDKUWP.1.2.0.127\build\wpa81\\..\..\lib\portable-wpa81+wp81\ARM\Lumia.Sense.winmd">
       <PackagePath>Lumia.Sense.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\packages\LumiaSensorCoreSDKUWP.1.2.0.127\lib\portable-wpa81+wp81\ARM\Lumia.Internal.HMBClient.dll">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\packages\LumiaSensorCoreSDKUWP.1.2.0.127\lib\portable-wpa81+wp81\ARM\Lumia.Internal.HMBClient.dll">
       <PackagePath>Lumia.Internal.HMBClient.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\packages\LumiaSensorCoreSDKUWP.1.2.0.127\build\wpa81\..\..\lib\portable-wpa81+wp81\ARM\Lumia.Sense.dll">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\packages\LumiaSensorCoreSDKUWP.1.2.0.127\build\wpa81\..\..\lib\portable-wpa81+wp81\ARM\Lumia.Sense.dll">
       <PackagePath>Lumia.Sense.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\packages\LumiaSensorCoreSDKTestingUWP.1.2.0.127\build\wpa81\..\..\lib\portable-wpa81+wp81\ARM\Lumia.Sense.Testing.dll">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\packages\LumiaSensorCoreSDKTestingUWP.1.2.0.127\build\wpa81\..\..\lib\portable-wpa81+wp81\ARM\Lumia.Sense.Testing.dll">
       <PackagePath>Lumia.Sense.Testing.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\SQLite.WP81\3.9.2\Redist\Debug\ARM\sqlite3.dll">
       <PackagePath>sqlite3.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\Assets\Logo.scale-240.png">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\Assets\Logo.scale-240.png">
       <PackagePath>Assets\Logo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\Assets\SmallLogo.scale-240.png">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\Assets\SmallLogo.scale-240.png">
       <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\Assets\SplashScreen.scale-240.png">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\Assets\SplashScreen.scale-240.png">
       <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\Assets\Square71x71Logo.scale-240.png">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\Assets\Square71x71Logo.scale-240.png">
       <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\Assets\StoreLogo.scale-240.png">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\Assets\StoreLogo.scale-240.png">
       <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\Assets\WideLogo.scale-240.png">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\Assets\WideLogo.scale-240.png">
       <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\Help\REDIST.TXT">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\Help\REDIST.TXT">
       <PackagePath>Help\REDIST.TXT</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\ActivityBackground\Help\REDIST.TXT">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\ActivityBackground\Help\REDIST.TXT">
       <PackagePath>ActivityBackground\Help\REDIST.TXT</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\bin\ARM\Debug\MyActivities.xr.xml">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\bin\ARM\Debug\MyActivities.xr.xml">
       <PackagePath>MyActivities.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\bin\ARM\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\bin\ARM\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\bin\ARM\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\bin\ARM\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\bin\ARM\Debug\ViewDetails.xbf">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\bin\ARM\Debug\ViewDetails.xbf">
       <PackagePath>ViewDetails.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="F:\mine\MyActivities\bin\ARM\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\GitHub\MyBlackBox\MyActivities\bin\ARM\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
