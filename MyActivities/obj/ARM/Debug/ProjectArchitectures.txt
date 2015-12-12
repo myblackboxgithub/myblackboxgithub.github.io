@@ -1,0 +1,2 @@
+C:\test\Tommy-ok\ActivityBackground\ActivityBackground.csproj;arm
+C:\test\Tommy-ok\MyActivities\MyBlackBox.csproj;arm

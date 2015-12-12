@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
+  <Identity Name="16344Mantasness.NotificationHandleingv6.0" Publisher="CN=9E0480BB-FAC8-4986-934D-9F7B90F2676E" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="deef0913-85fe-4754-80a9-2085cabe2ff0" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>NotificationHandleing\v6.0</DisplayName>
+    <PublisherDisplayName>Mantasness</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.1</OSMinVersion>
+    <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="MyActivities.App">
+      <m3:VisualElements DisplayName="BlackBox-Main_v1.0" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="MyActivities" ForegroundText="light" BackgroundColor="transparent" ToastCapable="true">
+        <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
+        </m3:DefaultTile>
+        <m3:SplashScreen Image="Assets\SplashScreen.png" />
+      </m3:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClientServer" />
+    <DeviceCapability Name="location" />
+    <m2:DeviceCapability Name="humaninterfacedevice">
+      <m2:Device Id="vidpid:0421 0716">
+        <m2:Function Type="usage:ffaa 0001" />
+        <m2:Function Type="usage:ffee 0001" />
+        <m2:Function Type="usage:ffee 0002" />
+        <m2:Function Type="usage:ffee 0003" />
+        <m2:Function Type="usage:ffee 0004" />
+      </m2:Device>
+    </m2:DeviceCapability>
+  </Capabilities>
+</Package>

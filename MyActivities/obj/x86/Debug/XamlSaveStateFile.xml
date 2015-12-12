@@ -1,0 +1,9 @@
+<XamlCompilerSaveState>
+  <ReferenceAssemblyList>
+    <LocalAssembly PathName="c:\users\tomtom\desktop\desktop\testtest\databindingtest\myactivities\obj\x86\debug\intermediatexaml\myactivities.exe" HashGuid="8bc6e3b2-23e3-4c26-005e-a5ca30446e74" />
+    <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windowsphoneapp\v8.1\extensionsdks\microsoft.vclibs\12.0\references\commonconfiguration\neutral\platform.winmd" HashGuid="58b6b6d1-928e-9908-9804-eb460e5e101b" />
+    <ReferenceAssembly PathName="c:\users\tomtom\desktop\databindingtest - try1 - 23-11-2015\packages\lumiasensorcoresdkuwp.1.2.0.124\lib\portable-wpa81+wp81\arm\lumia.internal.hmbclient.winmd" HashGuid="14b2b2be-c1d5-9a7c-dc00-31aba01c33b3" />
+    <ReferenceAssembly PathName="c:\users\tomtom\desktop\databindingtest - try1 - 23-11-2015\packages\lumiasensorcoresdktesting.1.1.1.1\lib\portable-wpa81+wp81\x86\lumia.sense.testing.winmd" HashGuid="e2460bd5-d6d2-ef6d-a28e-b38d2e3f5cb3" />
+    <ReferenceAssembly PathName="c:\users\tomtom\desktop\databindingtest - try1 - 23-11-2015\packages\lumiasensorcoresdkuwp.1.2.0.124\lib\portable-wpa81+wp81\x86\lumia.sense.winmd" HashGuid="51c38b45-4d0a-f63e-280a-1e35e81c4392" />
+  </ReferenceAssemblyList>
+</XamlCompilerSaveState>

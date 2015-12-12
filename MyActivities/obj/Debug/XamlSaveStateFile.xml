@@ -1,0 +1,7 @@
+<XamlCompilerSaveState>
+  <ReferenceAssemblyList>
+    <ReferenceAssembly PathName="f:\mine\packages\lumiasensorcoresdkuwp.1.2.0.127\lib\portable-wpa81+wp81\arm\lumia.internal.hmbclient.winmd" HashGuid="14b2b2be-c1d5-9a7c-dc00-31aba01c33b3" />
+    <ReferenceAssembly PathName="f:\mine\packages\lumiasensorcoresdktestinguwp.1.2.0.127\lib\portable-wpa81+wp81\x86\lumia.sense.testing.winmd" HashGuid="e2460bd5-d6d2-ef6d-a28e-b38d2e3f5cb3" />
+    <ReferenceAssembly PathName="f:\mine\packages\lumiasensorcoresdkuwp.1.2.0.127\lib\portable-wpa81+wp81\x86\lumia.sense.winmd" HashGuid="fbf39178-2a57-4ce7-9a6e-7b389ab1f3ee" />
+  </ReferenceAssemblyList>
+</XamlCompilerSaveState>
