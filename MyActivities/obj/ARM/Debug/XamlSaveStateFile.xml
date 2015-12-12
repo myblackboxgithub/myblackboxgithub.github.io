@@ -2,9 +2,9 @@
   <ReferenceAssemblyList>
     <LocalAssembly PathName="c:\users\tomtom\desktop\databindingtest - try1\myactivities\obj\arm\debug\intermediatexaml\myactivities.exe" HashGuid="8c2a7750-e485-af20-9229-bf6187bb316b" />
     <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windowsphoneapp\v8.1\extensionsdks\microsoft.vclibs\12.0\references\commonconfiguration\neutral\platform.winmd" HashGuid="58b6b6d1-928e-9908-9804-eb460e5e101b" />
-    <ReferenceAssembly PathName="c:\github\myblackbox\activitybackground\bin\arm\debug\activitybackground.winmd" HashGuid="b1e3cabc-5265-6843-a99d-d5c5c6773d4d" />
-    <ReferenceAssembly PathName="c:\github\myblackbox\packages\lumiasensorcoresdkuwp.1.2.0.127\lib\portable-wpa81+wp81\arm\lumia.internal.hmbclient.winmd" HashGuid="14b2b2be-c1d5-9a7c-dc00-31aba01c33b3" />
-    <ReferenceAssembly PathName="c:\github\myblackbox\packages\lumiasensorcoresdktestinguwp.1.2.0.127\lib\portable-wpa81+wp81\arm\lumia.sense.testing.winmd" HashGuid="e2460bd5-d6d2-ef6d-a28e-b38d2e3f5cb3" />
-    <ReferenceAssembly PathName="c:\github\myblackbox\packages\lumiasensorcoresdkuwp.1.2.0.127\lib\portable-wpa81+wp81\arm\lumia.sense.winmd" HashGuid="fbf39178-2a57-4ce7-9a6e-7b389ab1f3ee" />
+    <ReferenceAssembly PathName="f:\mine\activitybackground\bin\arm\debug\activitybackground.winmd" HashGuid="b1e3cabc-5265-6843-a99d-d5c5c6773d4d" />
+    <ReferenceAssembly PathName="f:\mine\packages\lumiasensorcoresdkuwp.1.2.0.127\lib\portable-wpa81+wp81\arm\lumia.internal.hmbclient.winmd" HashGuid="14b2b2be-c1d5-9a7c-dc00-31aba01c33b3" />
+    <ReferenceAssembly PathName="f:\mine\packages\lumiasensorcoresdktestinguwp.1.2.0.127\lib\portable-wpa81+wp81\arm\lumia.sense.testing.winmd" HashGuid="e2460bd5-d6d2-ef6d-a28e-b38d2e3f5cb3" />
+    <ReferenceAssembly PathName="f:\mine\packages\lumiasensorcoresdkuwp.1.2.0.127\lib\portable-wpa81+wp81\arm\lumia.sense.winmd" HashGuid="fbf39178-2a57-4ce7-9a6e-7b389ab1f3ee" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>

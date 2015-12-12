@@ -141,11 +141,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="SQLite.WP81, Version=3.9.1">
-      <Name>SQLite for Windows Phone 8.1</Name>
-    </SDKReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="Lumia.Internal.HMBClient, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LumiaSensorCoreSDKUWP.1.2.0.127\lib\portable-wpa81+wp81\ARM\Lumia.Internal.HMBClient.winmd</HintPath>
       <Private>True</Private>
@@ -164,6 +159,11 @@
       <Project>{aac19554-0c85-424e-9e03-bd296db0a3a1}</Project>
       <Name>ActivityBackground</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="SQLite.WP81, Version=3.9.2">
+      <Name>SQLite for Windows Phone 8.1 %28SQLite.WP81, Version=3.9.2%29</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
