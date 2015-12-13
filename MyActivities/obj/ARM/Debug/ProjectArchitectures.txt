@@ -1,0 +1,2 @@
+C:\Users\TomTom\Desktop\MyBlackBox - 13-12-2015\ActivityBackground\ActivityBackground.csproj;arm
+C:\Users\TomTom\Desktop\MyBlackBox - 13-12-2015\MyActivities\MyBlackBox.csproj;arm

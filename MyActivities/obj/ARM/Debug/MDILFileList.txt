@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Files>
+  <file>\ActivityBackground.winmd</file>
+  <file>\Lumia.Internal.HMBClient.winmd</file>
+  <file>\Lumia.Sense.Testing.winmd</file>
+  <file>\Lumia.Sense.winmd</file>
+  <file>\MyActivities.exe</file>
+  <file>\Microsoft.WindowsAzure.Messaging.Managed.dll</file>
+  <file>\Newtonsoft.Json.dll</file>
+  <file>\System.Net.Http.Extensions.dll</file>
+  <file>\System.Net.Http.Primitives.dll</file>
+</Files>
