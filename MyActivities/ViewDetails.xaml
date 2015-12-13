@@ -13,40 +13,41 @@
     </Page.Resources>
 
     <ScrollViewer>
-    <Grid x:Name="LayoutRoot">
+        <Grid x:Name="LayoutRoot">
 
-        <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition/>
-            </TransitionCollection>
-        </Grid.ChildrenTransitions>
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition/>
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="My Activities" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.RowSpan="5" Source="Assets/background-color.jpg" Margin="0 0 0 -100" Opacity="0.3" Stretch="Fill"></Image>
+            
+            <!-- Title Panel -->
+            <StackPanel Grid.Row="0" Margin="19,0,0,0">
+                <TextBlock Text="My Activities" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
                 <TextBlock Text="Details" Margin="5" Style="{ThemeResource TitleTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
-        </StackPanel>
+            </StackPanel>
 
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <ListView x:Name="lsvDisplay">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Bisque" Margin="5">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="tbkMode" Text="{Binding Path=Mode}" Style="{StaticResource BodyTextBlockStyle}" FontSize="24"></TextBlock>
-                                <TextBlock x:Name="tbkDateTime" Text="{Binding Path=Timestamp, Converter={StaticResource DateTimeToDateTimeOffsetConverter}}" Margin="5 0 0 0" Style="{StaticResource BodyTextBlockStyle}" FontSize="24"></TextBlock>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <!--TODO: Content should be placed within the following grid-->
+            <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+                <ListView x:Name="lsvDisplay">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Bisque" Margin="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="tbkMode" Text="{Binding Path=Mode}" Style="{StaticResource BodyTextBlockStyle}" FontSize="24"></TextBlock>
+                                    <TextBlock x:Name="tbkDateTime" Text="{Binding Path=Timestamp, Converter={StaticResource DateTimeToDateTimeOffsetConverter}}" Margin="5 0 0 0" Style="{StaticResource BodyTextBlockStyle}" FontSize="24"></TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </Grid>
-    </Grid>
     </ScrollViewer>
 </Page>

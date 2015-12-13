@@ -1,16 +1,13 @@
-﻿using System;
+﻿using MyActivities.Common;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Runtime.Serialization;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Background;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Storage;
-using Windows.UI.Popups;
+using Windows.Graphics.Display;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -18,11 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Lumia.Sense;
-using MyActivities.Model;
-using SQLite;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+// The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace MyActivities
 {
@@ -31,217 +25,92 @@ namespace MyActivities
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
-        private ActivityMonitor _aMonitor;
+        private NavigationHelper navigationHelper;
+        private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         public MainPage()
         {
             this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Required;
-            this.Loaded += MainPage_Loaded;
-            this.DataContext = ActivityReader.Instance();
+
+            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
+            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
-
-        private async void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (!await CallSensorcoreApiAsync(async () =>
-            {
-                if (_aMonitor == null)
-                {
-                    _aMonitor = await ActivityMonitor.GetDefaultAsync();
-                }
-                else
-                {
-                    await _aMonitor.ActivateAsync();
-                }
-
-                ActivityReader.Instance().History =
-                    await _aMonitor.GetActivityHistoryAsync(DateTime.Now.Date.AddDays(ActivityReader.Instance().TimeWindow), new TimeSpan(24, 0, 0));
-
-            }))
-            {
-                if (_aMonitor != null) await CallSensorcoreApiAsync(async () => await _aMonitor.DeactivateAsync());
-            }
-        }
-
-        private async void PollHistory(double timeWindow)
-        {
-            if (await CallSensorcoreApiAsync(async () =>
-            {
-                if (_aMonitor != null)
-                {
-                    ActivityReader.Instance().History =
-                        await _aMonitor.GetActivityHistoryAsync(DateTime.Now.Date.AddDays(timeWindow), new TimeSpan(24, 0, 0));
-                }
-            }))
-            {
-                //if (_aMonitor != null) await CallSensorcoreApiAsync(async () => await _aMonitor.DeactivateAsync());
-            }
-        }
-
-        private async Task<bool> CallSensorcoreApiAsync(Func<Task> action)
-        {
-            Exception failure = null;
-            try
-            {
-                await action();
-            }
-            catch (Exception e)
-            {
-                failure = e;
-            }
-            if (failure != null)
-            {
-                MessageDialog dialog;
-                switch (SenseHelper.GetSenseError(failure.HResult))
-                {
-                    case SenseError.LocationDisabled:
-                        dialog = new MessageDialog("Location has been disabled. Do you want to open Location settings now?", "Information");
-                        dialog.Commands.Add(new UICommand("Yes", async cmd => await SenseHelper.LaunchLocationSettingsAsync()));
-                        dialog.Commands.Add(new UICommand("No"));
-                        await dialog.ShowAsync();
-                        new System.Threading.ManualResetEvent(false).WaitOne(500);
-                        return false;
-                    case SenseError.SenseDisabled:
-                        dialog = new MessageDialog("Motion data has been disabled. Do you want to open Motion data settings now?", "Information");
-                        dialog.Commands.Add(new UICommand("Yes", async cmd => await SenseHelper.LaunchSenseSettingsAsync()));
-                        dialog.Commands.Add(new UICommand("No"));
-                        await dialog.ShowAsync();
-                        new System.Threading.ManualResetEvent(false).WaitOne(500);
-                        return false;
-                    case SenseError.SensorNotAvailable:
-                        dialog = new MessageDialog("The sensor is not supported on this device", "Information");
-                        await dialog.ShowAsync();
-                        new System.Threading.ManualResetEvent(false).WaitOne(500);
-                        return false;
-                    default:
-                        dialog = new MessageDialog("Failure: " + SenseHelper.GetSenseError(failure.HResult), "");
-                        await dialog.ShowAsync();
-                        return false;
-                }
-            }
-
-            return true;
-        }
-
 
         /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
+        /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
         /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        public NavigationHelper NavigationHelper
         {
-            // TODO: Prepare page for display here.
-
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
-
-
-
-
-
-
-
-            //await Register_BackgroundTask();
+            get { return this.navigationHelper; }
         }
 
-
-        private async void RegisterBtn_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Gets the view model for this <see cref="Page"/>.
+        /// This can be changed to a strongly typed view model.
+        /// </summary>
+        public ObservableDictionary DefaultViewModel
         {
-            string myTaskName = "TimeZoneTask";
-
-            // check if task is already registered
-            foreach (var cur in BackgroundTaskRegistration.AllTasks)
-                if (cur.Value.Name == myTaskName)
-                {
-                    await (new MessageDialog("Task already registered")).ShowAsync();
-                    return;
-                }
-
-            // Windows Phone app must call this to use trigger types (see MSDN)
-            await BackgroundExecutionManager.RequestAccessAsync();
-
-            // register a new task
-            BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder { Name = "TimeZoneTask", TaskEntryPoint = "BackgroundTask.TimeZoneTask" };
-            taskBuilder.SetTrigger(new TimeTrigger(15, true));
-            BackgroundTaskRegistration myFirstTask = taskBuilder.Register();
-
-            await (new MessageDialog("Task registered")).ShowAsync();
+            get { return this.defaultViewModel; }
         }
 
-
-        async Task Register_BackgroundTask()
+        /// <summary>
+        /// Populates the page with content passed during navigation.  Any saved state is also
+        /// provided when recreating a page from a prior session.
+        /// </summary>
+        /// <param name="sender">
+        /// The source of the event; typically <see cref="NavigationHelper"/>
+        /// </param>
+        /// <param name="e">Event data that provides both the navigation parameter passed to
+        /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
+        /// a dictionary of state preserved by this page during an earlier
+        /// session.  The state will be null the first time a page is visited.</param>
+        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            string myTaskName = "twohoursTask";
-
-            // check if task is already registered
-            foreach (var cur in BackgroundTaskRegistration.AllTasks)
-                if (cur.Value.Name == myTaskName)
-                {
-                    await (new MessageDialog("Task already registered")).ShowAsync();
-                    return;
-                }
-
-            await BackgroundExecutionManager.RequestAccessAsync();
-            var builder = new BackgroundTaskBuilder();
-            builder.Name = myTaskName;
-            //var condition = new SystemCondition(SystemTriggerType.TimeZoneChange, false);
-            //var trigger = new SystemTrigger(SystemTriggerType.TimeZoneChange, false);
-            var trigger = new TimeTrigger(60, true);
-            builder.TaskEntryPoint = typeof(ActivityBackground.BackTask).FullName;
-            //builder.AddCondition(condition);
-            builder.SetTrigger(trigger);
-            builder.Register();
-
-            await (new MessageDialog("My 2 hour background task added")).ShowAsync();
         }
 
-
-
-
-
-        private void BtnSave_OnClick(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Preserves state associated with this page in case the application is suspended or the
+        /// page is discarded from the navigation cache.  Values must conform to the serialization
+        /// requirements of <see cref="SuspensionManager.SessionState"/>.
+        /// </summary>
+        /// <param name="sender">The source of the event; typically <see cref="NavigationHelper"/></param>
+        /// <param name="e">Event data that provides an empty dictionary to be populated with
+        /// serializable state.</param>
+        private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
-            List<SQLActivity> sqlActivities = new List<SQLActivity>();
-            foreach (var activity in ActivityReader.Instance().History)
-            {
-                sqlActivities.Add(new SQLActivity()
-                {
-                    Mode = activity.Mode,
-                    DateTime = activity.Timestamp.DateTime
-                });
-            }
-
-            using (var dbConn = new SQLiteConnection(App.DBPATH))
-            {
-                dbConn.InsertAll(sqlActivities);
-            }
-
         }
 
-        private void Details_OnClick(object sender, RoutedEventArgs e)
+        #region NavigationHelper registration
+
+        /// <summary>
+        /// The methods provided in this section are simply used to allow
+        /// NavigationHelper to respond to the page's navigation methods.
+        /// <para>
+        /// Page specific logic should be placed in event handlers for the  
+        /// <see cref="NavigationHelper.LoadState"/>
+        /// and <see cref="NavigationHelper.SaveState"/>.
+        /// The navigation parameter is available in the LoadState method 
+        /// in addition to page state preserved during an earlier session.
+        /// </para>
+        /// </summary>
+        /// <param name="e">Provides data for navigation methods and event
+        /// handlers that cannot cancel the navigation request.</param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Frame.Navigate(typeof(ViewDetails), ActivityReader.Instance().History);
+            this.navigationHelper.OnNavigatedTo(e);
         }
 
-        private void Previous_OnClick(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            ActivityReader.Instance().PreviousDay();
-            btnNext.IsEnabled = true;
-            btnPrevious.IsEnabled = ActivityReader.Instance().TimeWindow > -30;
-            PollHistory(ActivityReader.Instance().TimeWindow);
+            this.navigationHelper.OnNavigatedFrom(e);
         }
+
+        #endregion
 
         private void Next_OnClick(object sender, RoutedEventArgs e)
         {
-            ActivityReader.Instance().NextDay();
-            btnNext.IsEnabled = ActivityReader.Instance().TimeWindow < 0;
-            btnPrevious.IsEnabled = true;
-            PollHistory(ActivityReader.Instance().TimeWindow);
+            Frame.Navigate(typeof(SensorsDB));
         }
     }
 }
