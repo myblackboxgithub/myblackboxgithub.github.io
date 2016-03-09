@@ -1,5 +1,1 @@
-### myblackbox
-### s00141425 Tommy Kang
-### this is my part in the team project
-
-![SensorDB Tommy part!](./myblackbox-demo.gif)
+![constuct!](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR9W0teTYvBxP1QWAsYfWQiDKDmtjMWOt6mz7XQjSqumzEmkPrG)
