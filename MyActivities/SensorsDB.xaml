@@ -5,68 +5,2266 @@
     xmlns:local="using:MyActivities"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:valueConverter ="using:MyActivities.Converters"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    xmlns:converters="using:MyBlackBox.Converters"
+    xmlns:dataVisualization="using:WinRTXamlToolkit.Controls.DataVisualization"
+    xmlns:controls="using:WinRTXamlToolkit.Controls">
+
     <Page.Resources>
-        <valueConverter:TimeSpanToString x:Key="TimeSpanToString"></valueConverter:TimeSpanToString>
-        <valueConverter:DateTimeToDateTimeOffsetConverter x:Key="DateTimeToDateTimeOffsetConverter"></valueConverter:DateTimeToDateTimeOffsetConverter>
-        <valueConverter:TimeWindowToString x:Key="TimeWindowToString"></valueConverter:TimeWindowToString>
+        <converters:TimeSpanToString x:Key="TimeSpanToString"></converters:TimeSpanToString>
+        <converters:DateTimeToDateTimeOffsetConverter x:Key="DateTimeToDateTimeOffsetConverter"></converters:DateTimeToDateTimeOffsetConverter>
+        <converters:TimeWindowToString x:Key="TimeWindowToString"></converters:TimeWindowToString>
+        <converters:WeekDayToString x:Key ="WeekDayToString"></converters:WeekDayToString>
     </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton Icon="Previous" Label="Previous" Name="btnPrevious" Click="Previous_OnClick"/>
-            <AppBarButton Icon="List" Label="Details" Name="btnDetails" Click="Details_OnClick"/>
             <AppBarButton Icon="Next" Label="Next" Name="btnNext" Click="Next_OnClick"/>
+            <!--<AppBarButton Icon="List" Label="Details" Name="btnDetails" Click="Details_OnClick"/>-->
+            <AppBarButton Icon="Setting" Label="Setting" Name="btnSetting" Click="btnSetting_OnClick"></AppBarButton>
+            <AppBarButton Icon="Pin" Label="Pin" Name="btnPin" Click="BtnPin_OnClick"></AppBarButton>
+            <!--<CommandBar.SecondaryCommands>
+                <AppBarButton Name="btnUI" Label="UI" Click="BtnUI_OnClick"></AppBarButton>
+            </CommandBar.SecondaryCommands>-->
         </CommandBar>
     </Page.BottomAppBar>
 
-    <ScrollViewer>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Image Grid.RowSpan="5" Source="Assets/background-color.jpg" Margin="0 0 0 -100" Opacity="0.3" Stretch="Fill"></Image>
-            
-            <StackPanel Grid.Row="0" Margin="5" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="btnSave" Content="Save to SQLite" Margin="20 0 0 0" Click="BtnSave_OnClick"></Button>
-                <!--<Button x:Name="btnView" Content="View" Margin="100 0 0 0" Click="BtnView_OnClick"></Button>-->
-            </StackPanel>
+    <Hub x:Name="Hub" x:Uid="Hub">
+        <HubSection x:Uid="HubSection3" Header="Activities" Width="600">
+            <DataTemplate>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="1">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Name="tbkDate" Text="{Binding TimeWindow, Converter={StaticResource TimeWindowToString}}" Style="{StaticResource HeaderTextBlockStyle}" FontSize="24"></TextBlock>
-                    <TextBlock Name="tbkTotalCount" Text="{Binding GetNumberOfActivities}" Style="{StaticResource HeaderTextBlockStyle}" FontSize="24" Margin="10 0 0 0"></TextBlock>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="20 5">
-                <!--<TextBlock Text="Hour" Style="{StaticResource BodyTextBlockStyle}" FontSize="24"></TextBlock>
-                <TextBlock Text="Idle" Style="{StaticResource BodyTextBlockStyle}" FontSize="24" Margin="5 0 0 0"></TextBlock>
-                <TextBlock Text="Activities" Style="{StaticResource BodyTextBlockStyle}" FontSize="24" Margin="5 0 0 0"></TextBlock>-->
-            </StackPanel>
-            <StackPanel Grid.Row="3" Margin="20 5">
-                <ListView x:Name="lstSummary" ItemsSource="{Binding ListData}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Border BorderBrush="Aqua" Margin="5">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Hour}" Style="{StaticResource BodyTextBlockStyle}" FontSize="24" Margin="5 0 10 0"></TextBlock>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding ActivityName}" Style="{StaticResource BodyTextBlockStyle}" FontSize="24" Margin="5 0 0 0"></TextBlock>
-                                        <TextBlock Text="{Binding ActivityTime, Converter={StaticResource TimeSpanToString}}" Style="{StaticResource BodyTextBlockStyle}" FontSize="24" Margin="5 0 0 0"></TextBlock>
-                                    </StackPanel>
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    <TextBlock Name="tbkDate" 
+                        Text="{Binding TimeWindow, Converter={StaticResource TimeWindowToString}}" 
+                        Style="{StaticResource HeaderTextBlockStyle}" 
+                        FontSize="20" 
+                        TextAlignment="Center"
+                        Grid.Row="0"/>
 
+                    <charting:Chart 
+                        x:Name="PieChart" 
+                        Width="500" Height="auto"
+                        Grid.Row="1">
+                        <charting:Chart.Series>
+                            <charting:PieSeries
+                            IndependentValueBinding= "{Binding ActivityName}"
+                            DependentValueBinding= "{Binding ActivityTime}" 
+                            IsSelectionEnabled="False"/>
+                        </charting:Chart.Series>
+                        
+                        <charting:Chart.LegendStyle>
+                            <Style TargetType="dataVisualization:Legend">
+                                <Setter Property="VerticalAlignment" Value="Stretch" />
+                                <Setter Property="ItemsPanel">
+                                    <Setter.Value>
+                                        <ItemsPanelTemplate>
+                                            <controls:UniformGrid
+                                                Columns="1" Rows="7" />
+                                        </ItemsPanelTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="TitleStyle">
+                                    <Setter.Value>
+                                        <Style TargetType="dataVisualization:Title">
+                                            <Setter Property="HorizontalAlignment" Value="Center" />
+                                        </Style>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="ItemContainerStyle" 
+                                        xmlns:series="using:WinRTXamlToolkit.Controls.DataVisualization.Charting">
+                                    <Setter.Value>
+                                        <Style TargetType="series:LegendItem">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="series:LegendItem">
+                                                        <Border MinWidth="200" 
+                                                                CornerRadius="10"
+                                                                VerticalAlignment="Stretch"
+                                                                HorizontalAlignment="Stretch"
+                                                                Background="{Binding Background}">
+                                                            <dataVisualization:Title
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                FontSize="12"
+                                                                FontWeight="Bold"
+                                                                Content="{TemplateBinding Content}" />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="dataVisualization:Legend">
+                                            <Border Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}" Padding="2">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition
+                                                            Height="Auto" />
+                                                        <RowDefinition />
+                                                    </Grid.RowDefinitions>
+                                                    <dataVisualization:Title
+                                                        Grid.Row="0"
+                                                        x:Name="HeaderContent"
+                                                        Content="{TemplateBinding Header}"
+                                                        ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                        Style="{TemplateBinding TitleStyle}" />
+                                                    <ScrollViewer
+                                                        Grid.Row="1"
+                                                        VerticalScrollBarVisibility="Auto"
+                                                        BorderThickness="0"
+                                                        Padding="0"
+                                                        IsTabStop="False">
+                                                        <ItemsPresenter
+                                                            x:Name="Items"
+                                                            Margin="10,0,10,10" />
+                                                    </ScrollViewer>
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </charting:Chart.LegendStyle>
+                    </charting:Chart>
+                </Grid>
+            </DataTemplate>
+        </HubSection>
+        <HubSection x:Uid="HubSection1" Header="Current Active" Width="600">
+            <DataTemplate>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
+                    <TextBlock Name="tbkDate" 
+                        Text="{Binding TimeWindow, Converter={StaticResource TimeWindowToString}}" 
+                        Style="{StaticResource HeaderTextBlockStyle}" 
+                        FontSize="20" 
+                        TextAlignment="Center"
+                        Grid.Row="0"/>
 
-            </StackPanel>
-        </Grid>
-    </ScrollViewer>
+                    <charting:Chart 
+                    x:Name="LineChart1"
+                    Width="500" Height="auto"
+                    Grid.Row="1">
+                        <charting:Chart.Axes>
+                            <charting:LinearAxis Orientation="X" ShowGridLines="True" />
+                            <charting:LinearAxis Orientation="Y" ShowGridLines="True" />
+                        </charting:Chart.Axes>
+                        <charting:LineSeries
+                        Title="Active"
+                        IndependentValueBinding="{Binding Hour}" 
+                        DependentValueBinding="{Binding ActivityTime}"
+                        IsSelectionEnabled="False"
+                        Foreground="Blue"/>
+                        <charting:LineSeries
+                        Title="Idle" 
+                        IndependentValueBinding = "{Binding Hour}"
+                        DependentValueBinding = "{Binding ActivityTime}"
+                        IsSelectionEnabled="True"
+                        Foreground="Red"/>
+                    </charting:Chart>
+                </Grid>
+            </DataTemplate>
+        </HubSection>
+
+        <HubSection x:Uid="HubSection2" Header="Expecting Active" Width="600">
+            <DataTemplate>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Name="tbkDate" 
+                        Text="{Binding TimeWindow, Converter={StaticResource WeekDayToString}}" 
+                        Style="{StaticResource HeaderTextBlockStyle}" 
+                        FontSize="20" 
+                        TextAlignment="Center"
+                        Grid.Row="0"/>
+
+                    <charting:Chart 
+                    x:Name="LineChart2"
+                    Width="500" Height="auto"
+                    Grid.Row="1">
+                        <charting:Chart.Axes>
+                            <charting:LinearAxis Orientation="X" ShowGridLines="True" />
+                            <charting:LinearAxis Orientation="Y" ShowGridLines="True" />
+                        </charting:Chart.Axes>
+                        <charting:LineSeries
+                        Title="Cur" 
+                        IndependentValueBinding = "{Binding Hour}"
+                        DependentValueBinding = "{Binding ActivityTime}"
+                        IsSelectionEnabled="False"
+                        Foreground="Blue"/>
+                        <charting:LineSeries
+                        Title="Past"
+                        IndependentValueBinding="{Binding Hour}" 
+                        DependentValueBinding="{Binding ActivityTime}"
+                        IsSelectionEnabled="False"
+                        Foreground="Red"/>
+                    </charting:Chart>
+                </Grid>
+            </DataTemplate>
+        </HubSection>
+    </Hub>
 </Page>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+

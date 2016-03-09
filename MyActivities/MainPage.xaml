@@ -11,7 +11,13 @@
     <Page.BottomAppBar>
         <CommandBar>
             <!--<AppBarButton Icon="Previous" Label="Previous" Name="btnPrevious" Click="Previous_OnClick"/>-->
-            <AppBarButton Icon="Next" Label="Next" Name="btnNext" Click="Next_OnClick"/>
+            <AppBarButton Icon="Next" Label="Next" Name="btnNext" Click="BtnUI_OnClick"/>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Name="btnUI" Label="UI" Click="BtnUI_OnClick"></AppBarButton>
+                <AppBarButton Name="btnSensors" Label="Sensors" Click="BtnSensors_OnClick"></AppBarButton>
+                <AppBarButton Name="btnNotification" Label="Notification" Click="BtnNotification_OnClick"></AppBarButton>
+                <AppBarButton Name="btnLocation"  Label="Location" Click="BtnLocation_OnClick"></AppBarButton>
+            </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
 

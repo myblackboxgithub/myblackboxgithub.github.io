@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -9,8 +10,12 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Globalization.DateTimeFormatting;
+using Windows.Graphics.Display;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Popups;
+using Windows.UI.StartScreen;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -18,9 +23,14 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ClassLibrary;
 using Lumia.Sense;
-using MyActivities.Model;
-using SQLite;
+using MyBlackBox;
+using SQLite.Net;
+using SQLite.Net.Async;
+using SQLiteNetExtensionsAsync.Extensions;
+using SQLite.Net.Platform.WinRT;
+using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -31,15 +41,27 @@ namespace MyActivities
     /// </summary>
     public sealed partial class SensorsDB : Page
     {
-
         private ActivityMonitor _aMonitor;
+        private const string tileId = "SecondTile.SensorDB";
+        private static string SQLiteFile = "MyBlackBox.sqlite3";
+        private static string DBPATH = Path.Combine(ApplicationData.Current.LocalFolder.Path, SQLiteFile);
 
         public SensorsDB()
         {
             this.InitializeComponent();
+
             this.NavigationCacheMode = NavigationCacheMode.Required;
             this.Loaded += SensorsDB_Loaded;
+
             this.DataContext = ActivityReader.Instance();
+        }
+
+        //it is to covert to timespan to int
+        class MyDuration
+        {
+            public int Hour { get; set; }
+            public Activity ActivityName { get; set; }
+            public int ActivityTime { get; set; }
         }
 
         private async void SensorsDB_Loaded(object sender, RoutedEventArgs e)
@@ -62,6 +84,10 @@ namespace MyActivities
             {
                 if (_aMonitor != null) await CallSensorcoreApiAsync(async () => await _aMonitor.DeactivateAsync());
             }
+
+            DisplayLineChart1();
+            await DisplayLineChart2();
+            DisplayPieChart();
         }
 
         private async void PollHistory(double timeWindow)
@@ -77,6 +103,10 @@ namespace MyActivities
             {
                 //if (_aMonitor != null) await CallSensorcoreApiAsync(async () => await _aMonitor.DeactivateAsync());
             }
+
+            DisplayLineChart1();
+            await DisplayLineChart2();
+            DisplayPieChart();
         }
 
         private async Task<bool> CallSensorcoreApiAsync(Func<Task> action)
@@ -124,103 +154,50 @@ namespace MyActivities
             return true;
         }
 
-
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Prepare page for display here.
+            await RegisterBackgoundTask();
 
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
-
-
-
-
-
-
-
-            //await Register_BackgroundTask();
+            DisplayInformation.AutoRotationPreferences = DisplayOrientations.LandscapeFlipped;
         }
 
-
-        private async void RegisterBtn_Click(object sender, RoutedEventArgs e)
+        private async Task RegisterBackgoundTask()
         {
-            string myTaskName = "TimeZoneTask";
-
-            // check if task is already registered
-            foreach (var cur in BackgroundTaskRegistration.AllTasks)
-                if (cur.Value.Name == myTaskName)
-                {
-                    await (new MessageDialog("Task already registered")).ShowAsync();
-                    return;
-                }
-
-            // Windows Phone app must call this to use trigger types (see MSDN)
-            await BackgroundExecutionManager.RequestAccessAsync();
-
-            // register a new task
-            BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder { Name = "TimeZoneTask", TaskEntryPoint = "BackgroundTask.TimeZoneTask" };
-            taskBuilder.SetTrigger(new TimeTrigger(15, true));
-            BackgroundTaskRegistration myFirstTask = taskBuilder.Register();
-
-            await (new MessageDialog("Task registered")).ShowAsync();
-        }
-
-
-        async Task Register_BackgroundTask()
-        {
-            string myTaskName = "twohoursTask";
-
-            // check if task is already registered
-            foreach (var cur in BackgroundTaskRegistration.AllTasks)
-                if (cur.Value.Name == myTaskName)
-                {
-                    await (new MessageDialog("Task already registered")).ShowAsync();
-                    return;
-                }
-
-            await BackgroundExecutionManager.RequestAccessAsync();
-            var builder = new BackgroundTaskBuilder();
-            builder.Name = myTaskName;
-            //var condition = new SystemCondition(SystemTriggerType.TimeZoneChange, false);
-            //var trigger = new SystemTrigger(SystemTriggerType.TimeZoneChange, false);
-            var trigger = new TimeTrigger(60, true);
-            builder.TaskEntryPoint = typeof(ActivityBackground.BackTask).FullName;
-            //builder.AddCondition(condition);
-            builder.SetTrigger(trigger);
-            builder.Register();
-
-            await (new MessageDialog("My 2 hour background task added")).ShowAsync();
-        }
-
-
-
-
-
-        private void BtnSave_OnClick(object sender, RoutedEventArgs e)
-        {
-            List<SQLActivity> sqlActivities = new List<SQLActivity>();
-            foreach (var activity in ActivityReader.Instance().History)
+            try
             {
-                sqlActivities.Add(new SQLActivity()
+                BackgroundAccessStatus status = await BackgroundExecutionManager.RequestAccessAsync();
+                if (status != BackgroundAccessStatus.Denied)
                 {
-                    Mode = activity.Mode,
-                    DateTime = activity.Timestamp.DateTime
-                });
-            }
+                    bool isCheckingTaskRegistered =
+                    BackgroundTaskRegistration.AllTasks.Any(x => x.Value.Name == "CheckingTask");
 
-            using (var dbConn = new SQLiteConnection(App.DBPATH))
+                    //to make trigger at 0clock to compare the data
+                    var nextOClock = new TimeSpan(DateTime.Now.AddHours(1).Hour, 0, 0);
+                    var timeTilNextOClock = nextOClock - DateTime.Now.TimeOfDay;
+                    var minutesTillNextHour = (uint)timeTilNextOClock.TotalMinutes;
+
+                    if (!isCheckingTaskRegistered)
+                    {
+                        BackgroundTaskBuilder checkingTaskBuilder = new BackgroundTaskBuilder()
+                        {
+                            Name = "CheckingTask",
+                            TaskEntryPoint = "ActivityBackground.CheckingTask"
+                        };
+                        checkingTaskBuilder.SetTrigger(new TimeTrigger(minutesTillNextHour, false));
+                        checkingTaskBuilder.Register();
+                    }
+                }
+            }
+            catch (Exception e)
             {
-                dbConn.InsertAll(sqlActivities);
+                Debug.WriteLine("The acess has already been granted: " + e.Message);
             }
-
         }
 
         private void Details_OnClick(object sender, RoutedEventArgs e)
@@ -242,6 +219,208 @@ namespace MyActivities
             btnNext.IsEnabled = ActivityReader.Instance().TimeWindow < 0;
             btnPrevious.IsEnabled = true;
             PollHistory(ActivityReader.Instance().TimeWindow);
+        }
+
+        private void BtnUI_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void BtnPin_OnClick(object sender, RoutedEventArgs e)
+        {
+            bool isExistTile = SecondaryTile.Exists(tileId);
+            if (!isExistTile)
+            {
+                //uint stepCount = await App.Engine.GetStepCountAsync();
+                //uint meter = Helper.GetMeter(stepCount);
+                //uint meterSmall = Helper.GetSmallMeter(stepCount);
+
+                //uint stepCount = 27946;
+                uint level = 1;
+                uint levelSmall = 1;
+
+                try
+                {
+
+                    var secondaryTile = new SecondaryTile(
+                            tileId,
+                            "My BlackBox",
+                            "/SensorsDB.xaml",
+                             new Uri("ms-appx:///Assets/level" + levelSmall + ".png", UriKind.Absolute),
+                            TileSize.Square150x150);
+
+                    secondaryTile.VisualElements.Square71x71Logo = new Uri("ms-appx:///Assets/level" + levelSmall + ".png", UriKind.Absolute);
+                    secondaryTile.VisualElements.ShowNameOnSquare150x150Logo = true;
+                    //secondaryTile.VisualElements.ShowNameOnSquare310x310Logo = false;
+                    secondaryTile.VisualElements.ShowNameOnWide310x150Logo = false;
+                    secondaryTile.VisualElements.BackgroundColor = Colors.SkyBlue;
+
+                    //secondaryTile.VisualElements.Wide310x150Logo = new Uri("ms-appx:///Assets/wide" + meter + ".png", UriKind.Absolute);
+                    //secondaryTile.RoamingEnabled = false;
+
+                    await secondaryTile.RequestCreateAsync();
+
+                }
+                catch (Exception exp)
+                {
+
+                }
+                return;
+            }
+            else
+            {
+
+                SecondaryTile secondaryTile = new SecondaryTile(tileId);
+                await secondaryTile.RequestDeleteAsync();
+
+                if (!SecondaryTile.Exists(tileId))
+                {
+                    btnPin.Icon = new SymbolIcon(Symbol.Pin);
+                    btnPin.Label = "Pin";
+                }
+                else
+                {
+                    btnPin.Icon = new SymbolIcon(Symbol.UnPin);
+                    btnPin.Label = "UnPin";
+                }
+
+            }
+
+        }
+
+        public static List<T> FindChildrenByControl<T>(DependencyObject root) where T : FrameworkElement
+        {
+            var list = new List<T>();
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(root); i++)
+            {
+                var child = VisualTreeHelper.GetChild(root, i);
+
+                if (child is T)
+                {
+                    list.Add(child as T);
+                }
+                else
+                {
+                    list.AddRange(FindChildrenByControl<T>(child));
+                }
+            }
+            return list;
+        }
+
+        private void DisplayLineChart1()
+        {
+            List<MyDuration> myActive = new List<MyDuration>();
+            List<MyDuration> myIdle = new List<MyDuration>();
+            foreach (var linedata in ActivityReader.Instance().ListData)
+            {
+                if (DateTime.Now.Hour < linedata.Hour && ActivityReader.Instance().TimeWindow == 0)
+                    break;
+
+                if (linedata.ActivityName == Activity.Idle)
+                    myIdle.Add(new MyDuration() { Hour = linedata.Hour, ActivityTime = (int)linedata.ActivityTime.TotalMinutes });
+                else if ((linedata.ActivityName == Activity.Unknown))
+                    myActive.Add(new MyDuration() { Hour = linedata.Hour, ActivityTime = (int)linedata.ActivityTime.TotalMinutes });
+            }
+
+            var chart1Test = FindChildrenByControl<Chart>(Hub).FirstOrDefault(x => x.Name == "LineChart1");
+
+            (chart1Test.Series[0] as LineSeries).ItemsSource = myActive;
+            (chart1Test.Series[1] as LineSeries).ItemsSource = myIdle;
+        }
+
+        private void DisplayPieChart()
+        {
+            int totalIdle = 0, totalMoving = 0, totalStationary = 0,
+                totalWalking = 0, totalRunning = 0, totalBiking = 0, totalMovinginVehicle = 0;
+
+            foreach (var instance in ActivityReader.Instance().ListData)
+            {
+                switch (instance.ActivityName)
+                {
+                    case Activity.Idle:
+                        totalIdle += (int)instance.ActivityTime.TotalMilliseconds;
+                        break;
+                    case Activity.Moving:
+                        totalMoving += (int)instance.ActivityTime.TotalMilliseconds;
+                        break;
+                    case Activity.Stationary:
+                        totalStationary += (int)instance.ActivityTime.TotalMilliseconds;
+                        break;
+                    case Activity.Walking:
+                        totalWalking += (int)instance.ActivityTime.TotalMilliseconds;
+                        break;
+                    case Activity.Running:
+                        totalRunning += (int)instance.ActivityTime.TotalMilliseconds;
+                        break;
+                    case Activity.Biking:
+                        totalBiking += (int)instance.ActivityTime.TotalMilliseconds;
+                        break;
+                    case Activity.MovingInVehicle:
+                        totalMovinginVehicle += (int)instance.ActivityTime.TotalMilliseconds;
+                        break;
+                }
+            }
+            List<MyDuration> myActive = new List<MyDuration>()
+            {
+                new MyDuration() { ActivityName = Activity.Idle, ActivityTime = totalIdle},
+                new MyDuration() { ActivityName = Activity.Moving, ActivityTime = totalMoving},
+                new MyDuration() { ActivityName = Activity.Stationary, ActivityTime = totalStationary},
+                new MyDuration() { ActivityName = Activity.Walking, ActivityTime = totalWalking},
+                new MyDuration() { ActivityName = Activity.Running, ActivityTime = totalRunning},
+                new MyDuration() { ActivityName = Activity.Biking, ActivityTime = totalBiking},
+                new MyDuration() { ActivityName = Activity.MovingInVehicle, ActivityTime = totalMovinginVehicle}
+            };
+
+            var pieChart = FindChildrenByControl<Chart>(Hub).FirstOrDefault(x => x.Name == "PieChart");
+            (pieChart.Series[0] as PieSeries).ItemsSource = myActive;
+        }
+
+        private async Task DisplayLineChart2()
+        {
+            List<MyDuration> currentActive = new List<MyDuration>();
+            foreach (var linedata in ActivityReader.Instance().ListData)
+            {
+                if (linedata.ActivityName == Activity.Unknown)
+                {
+                    if (DateTime.Now.Hour < linedata.Hour)
+                        break;
+
+                    currentActive.Add(new MyDuration() { Hour = linedata.Hour, ActivityTime = (int)linedata.ActivityTime.TotalMinutes });
+                }
+            }
+
+            var chart2Test = FindChildrenByControl<Chart>(Hub).FirstOrDefault(x => x.Name == "LineChart2");
+
+            (chart2Test.Series[0] as LineSeries).ItemsSource = currentActive;
+
+
+            //To replace sunday value = 7
+            var myWeekday = DateTime.Now.DayOfWeek;
+            if (myWeekday == (int)DayOfWeek.Sunday)
+            {
+                myWeekday = (DayOfWeek)myDayWeek.sunday;
+            }
+
+            using (var connection = new SQLiteConnectionWithLock(new SQLitePlatformWinRT(), new SQLiteConnectionString(DBPATH, false)))
+            {
+                var dbConn = new SQLiteAsyncConnection(() => connection);
+
+                WeekHistory dayofWeek = await dbConn.GetWithChildrenAsync<WeekHistory>(myWeekday, true);
+
+                List<MyDuration> pastAvgIdle = new List<MyDuration>();
+                for (int i = 0; i < 48; i = i + 2)
+                {
+                    pastAvgIdle.Add(new MyDuration() { Hour = dayofWeek.DayHistorys[i].Hour, ActivityTime = (int)dayofWeek.DayHistorys[i].ActivityTime.TotalMinutes });
+                }
+
+                (chart2Test.Series[1] as LineSeries).ItemsSource = pastAvgIdle;
+            }
+        }
+
+        private void btnSetting_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SensorSetting));
         }
     }
 }

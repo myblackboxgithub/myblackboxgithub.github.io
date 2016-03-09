@@ -108,9 +108,24 @@ namespace MyActivities
 
         #endregion
 
-        private void Next_OnClick(object sender, RoutedEventArgs e)
+        private void BtnUI_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSensors_OnClick(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(SensorsDB));
+        }
+
+        private void BtnNotification_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Notification));
+        }
+
+        private void BtnLocation_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof (Location));
         }
     }
 }

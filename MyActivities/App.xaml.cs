@@ -17,9 +17,11 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-using MyActivities.Helpers;
-using MyActivities.Model;
-using SQLite;
+using Lumia.Sense;
+using MyBlackBox;
+using SQLite.Net;
+using SQLite.Net.Platform.WinRT;
+using SQLiteNetExtensions.Extensions;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -30,9 +32,8 @@ namespace MyActivities
     /// </summary>
     public sealed partial class App : Application
     {
-        private static string SQLiteFile = "MyActivityz.sqlite3";
-        public static string DBPATH = Path.Combine(ApplicationData.Current.LocalFolder.Path, SQLiteFile);
-        private static DatabaseHelperClass db;
+
+        //private static DatabaseHelperClass db;
 
         private TransitionCollection transitions;
 
@@ -44,30 +45,7 @@ namespace MyActivities
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
-
-            if (!CheckFileExists(SQLiteFile).Result)
-            {
-                using (var db = new SQLiteConnection(DBPATH))
-                {
-                    db.CreateTable<SQLActivity>();
-                }
-            }
-
         }
-        private async Task<bool> CheckFileExists(string fileName)
-        {
-            try
-            {
-                var store = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
-                return true;
-            }
-            catch
-            {
-            }
-            return false;
-        }
-
-
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -126,7 +104,10 @@ namespace MyActivities
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+
+//it is for the startup page
+
+                if (!rootFrame.Navigate(typeof(SensorsDB), e.Arguments))
                 {
                     throw new Exception("Failed to create initial page");
                 }

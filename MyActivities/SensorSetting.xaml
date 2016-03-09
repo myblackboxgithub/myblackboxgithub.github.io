@@ -1,0 +1,112 @@
+﻿<Page
+    x:Class="MyBlackBox.SensorSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyBlackBox"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="Sensors Setting" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <!--<TextBlock Text="Notification Zone" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>-->
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <StackPanel x:Name="TimeSetting"
+                    HorizontalAlignment="Center" 
+                    Grid.Row="0"
+                    Margin="0 100 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="20" Text="Green Zone: "></TextBlock>
+                    <TextBlock x:Name="GreenTime" FontSize="20"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="20" Text="Yellow Zone: "></TextBlock>
+                    <TextBlock x:Name="YellowTime" FontSize="20"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="20" Text="Red Zone: "></TextBlock>
+                    <TextBlock x:Name="RedTime" FontSize="20"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Background="Black" Margin="30,0" VerticalAlignment="Center" Grid.Row="2">
+            <Grid Height="100" x:Name="CustomSliderControl">
+                <Grid.Resources>
+                    <Style TargetType="Grid" x:Name="HandleStyle">
+                        <Setter Property="Height" Value="40" />
+                        <Setter Property="Width" Value="40" />
+                        <Setter Property="Background" Value="White" />
+                        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                    </Style>
+                    <Style TargetType="TextBlock" x:Name="HandleTextStyle">
+                        <Setter Property="Foreground" Value="DimGray" />
+                        <Setter Property="FontSize" Value="20" />
+                        <Setter Property="TextAlignment" Value="Center" />
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="IsHitTestVisible" Value="False" />
+                    </Style>
+                </Grid.Resources>
+
+                <Rectangle x:Name="Track" Grid.Column="0" Height="10" Fill="DimGray" />
+                <Canvas Height="10" Background="AliceBlue" HorizontalAlignment="Center">
+                    <Rectangle x:Name="FillTrackGrid" RadiusX="10" RadiusY="10" Height="10" Fill="Yellow" >
+                        <Rectangle.RenderTransform>
+                            <CompositeTransform TranslateX="-140"/>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                </Canvas>
+
+                <Grid x:Name="LeftHandle" Style="{StaticResource HandleStyle}"
+                        ManipulationMode="TranslateX" 
+                        ManipulationDelta="LeftHandle_ManipulationDelta">
+                    <Grid.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="Assets/greenlight.png"/>
+                    </Grid.Background>
+                    <Grid.RenderTransform>
+                        <CompositeTransform TranslateX="-140"/>
+                    </Grid.RenderTransform>
+                    <TextBlock x:Name="LeftHandleText" Text="0"
+                       Style="{StaticResource HandleTextStyle}" FontWeight="Bold" Foreground="White"/>
+                </Grid>
+                <Grid x:Name="RightHandle" Style="{StaticResource HandleStyle}"
+                      ManipulationMode="TranslateX" 
+                      ManipulationDelta="RightHandle_ManipulationDelta">
+                    <Grid.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="Assets/redlight.png"/>
+                    </Grid.Background>
+                    <Grid.RenderTransform>
+                        <CompositeTransform TranslateX="-140"/>
+                    </Grid.RenderTransform>
+                    <TextBlock x:Name="RightHandleText" Text="0"
+                       Style="{StaticResource HandleTextStyle}" FontWeight="Bold" Foreground="White" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Save" Margin="5" x:Name="btnSettingSave" Click="BtnSettingSave_OnClick"></Button>
+            <Button Content="Reset" Margin="5" x:Name="btnSettingReset" Click="BtnSettingReset_OnClick"></Button>
+        </StackPanel>
+
+    </Grid>
+</Page>

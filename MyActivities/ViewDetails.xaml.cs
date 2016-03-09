@@ -17,7 +17,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Lumia.Sense;
-using MyActivities.Model;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -101,6 +100,8 @@ namespace MyActivities
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
+
             IList<ActivityMonitorReading> allActivityHistory = e.Parameter as IList<ActivityMonitorReading>;
             
             lsvDisplay.ItemsSource = allActivityHistory;
