@@ -1,5 +1,5 @@
 ###s00141425 Tommy Kang
-### Tommy Parts for my blackbox project
+### Tommy Parts for "my blackbox" project
 
 ### the screen shot
 ![Tommy Part](./myblackbox-demo.gif)
