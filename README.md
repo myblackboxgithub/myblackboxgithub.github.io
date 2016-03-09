@@ -18,8 +18,8 @@ Microsoft Lunima 635 (Windows phone 8.1)
 8. WinRTXamlToolKit.Controls.DataVisualizator v.1.8.1
 
 ### required sample data
-1.MyBlackBox.sqlite3
-2.setting.txt
+1. MyBlackBox.sqlite3
+2. setting.txt
 
 ![sampledata](./inputdata.png)
 
