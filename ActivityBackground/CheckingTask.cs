@@ -15,8 +15,10 @@ using Windows.Storage.Streams;
 using Windows.UI.Notifications;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls.Maps;
+using ActivityBackground.DataModel;
 using ClassLibrary;
 using Lumia.Sense;
+using Microsoft.WindowsAzure.MobileServices;
 using SQLite.Net;
 using SQLite.Net.Async;
 using SQLite.Net.Platform.WinRT;
@@ -32,6 +34,17 @@ namespace ActivityBackground
         private ActivityMonitor _aMonitor;
         private const string tileId = "SecondTile.SensorDB";
 
+        private static MobileServiceClient MobileService 
+            = new MobileServiceClient("https://blackbox-js.azure-mobile.net/","uYTKaYiQCJTsIoGqTdMeLxgbntBFxA56");
+
+        //private MobileServiceCollection<User, User> users;
+        private MobileServiceCollection<ToastContent, ToastContent> toasts;
+        //private IMobileServiceTable<User> userTable = MobileService.GetTable<User>();
+        private IMobileServiceTable<ToastContent> toastTable = MobileService.GetTable<ToastContent>();
+
+        private string patientStatus = string.Empty;
+        private double latitude, longitude;
+
         public async void Run(IBackgroundTaskInstance taskInstance)
         {
             BackgroundTaskDeferral deferral = taskInstance.GetDeferral();
@@ -39,8 +52,10 @@ namespace ActivityBackground
             await SetInitalizeSensors();
 
             await CheckStatusEveryHour();
-            
+
             await SaveDailyToDb();
+
+            await SendNotificationToAzure(DateTime.Now.ToString(@"h\:mm tt"));
 
             deferral.Complete();
         }
@@ -48,12 +63,11 @@ namespace ActivityBackground
         private async Task SaveDailyToDb()
         {
             var tonightZeroOclock = DateTime.Today.AddDays(1);
-            var tonight10MinBefore = tonightZeroOclock.AddMinutes(-50);
-            var tonight10MinAfter = tonightZeroOclock.AddMinutes(50);
+            var tonight10MinBefore = tonightZeroOclock.AddMinutes(-15);
+            var tonight10MinAfter = tonightZeroOclock.AddMinutes(15);
             if (DateTime.Now > tonight10MinBefore && DateTime.Now < tonight10MinAfter)
             {
                 //Debug.WriteLine("it is time to save DB");
-
                 await SaveTodayDb();
             }
 
@@ -128,37 +142,51 @@ namespace ActivityBackground
 
             //read geolocation
             Geoposition geoposition = await GetGeoLocation();
-            var latitude = geoposition.Coordinate.Point.Position.Latitude;
-            var longitude = geoposition.Coordinate.Point.Position.Longitude;
+            latitude = geoposition.Coordinate.Point.Position.Latitude;
+            longitude = geoposition.Coordinate.Point.Position.Longitude;
 
-            //Debug.WriteLine(latitude + ":" + longitude);
-
-            CalculateStatus(avgActivieTime, currentActivieTime, settingZone, timeSlot, latitude, longitude);
+            CalculateStatus(avgActivieTime, currentActivieTime, settingZone, timeSlot);
         }
 
         private void CalculateStatus(TimeSpan avgActivieTime, TimeSpan currentActivieTime, SettingZone settingZone,
-            int timeSlot, double latitude, double longitude)
+            int timeSlot)
         {
             var difference = (int) (avgActivieTime - currentActivieTime).TotalMinutes;
             if (difference > settingZone.Redlight) //redzone
             {
+                patientStatus = "Alert";
                 SendNotification("Alert," + DateTime.Now.ToString(@"h\:mm") + ",Lat:" + latitude + ",Lon:" + longitude);
-                
                 UpdateTile(currentActivieTime, avgActivieTime, timeSlot, 3);
             }
             else if (difference > settingZone.GreenLight) //yellowzone
             {
+                patientStatus = "Warning";
                 SendNotification("Warning," + DateTime.Now.ToString(@"h\:mm") + ",Lat:" + latitude + ",Lon:" + longitude);
-
                 UpdateTile(currentActivieTime, avgActivieTime, timeSlot, 2);
             }
             else
             {
+                patientStatus = "Fine";
                 SendNotification("Fine," + DateTime.Now.ToString(@"h\:mm") + ",Lat:" + latitude + ",Lon:" + longitude);
-
                 UpdateTile(currentActivieTime, avgActivieTime, timeSlot, 1);
             }
         }
+
+        private async Task SendNotificationToAzure(string alertTime)
+        {
+            var toast = new ToastContent { toasttext = patientStatus, alert_time = alertTime, Longitude = latitude, Latitude = longitude };
+            // await InsertUserObject(user);
+            try
+            {
+                await InsertToastObject(toast);
+                await RefreshToastItems();
+            }
+            catch (Exception ex)
+            {
+                await new MessageDialog(ex.Message, "Error loading toasts").ShowAsync();
+            }
+        }
+
 
         private static async Task<SettingZone> ReadSliderSetting()
         {
@@ -398,7 +426,6 @@ namespace ActivityBackground
             SendNotification(saveDate.DayOfWeek + ", " + saveDate.ToString("dd/MMM/yyyy") + ", saved!");
 
 
-
             await PollHistory(ActivityReader.Instance().TimeWindow);
 
             List<ActivityDuration> activityDurations = ActivityReader.Instance().ListData;
@@ -439,6 +466,49 @@ namespace ActivityBackground
             {
             }
             return false;
+        }
+        private async Task InsertToastObject(ToastContent toast)
+        {
+            await toastTable.InsertAsync(toast);
+            toasts.Add(toast);
+            await RefreshToastItems();
+        }
+        private async Task RefreshToastItems()
+        {
+            MobileServiceInvalidOperationException exception = null;
+            try
+            {
+                // This code refreshes the entries in the list view by querying the TodoItems table.
+                // The query excludes completed TodoItems
+                toasts = await toastTable
+                //.Where(user => user.deleted == false)
+                .ToCollectionAsync();
+            }
+            catch (MobileServiceInvalidOperationException e)
+            {
+                exception = e;
+            }
+
+            if (exception != null)
+            {
+                await new MessageDialog(exception.Message, "Error loading items").ShowAsync();
+            }
+            else
+            {
+                //MobileServiceCollection<User, User> usersObj = await userTable
+                //.Where(user => user.FirstName!= null)
+                //.ToCollectionAsync();
+                //names.Clear();
+                //foreach (User u in users)
+                //{
+
+                //    names.Add(u.FirstName.ToString());
+                //}
+                //lstUsersList.ItemsSource = names;
+
+                //lstUsersList.ItemsSource = users;
+                //this.ButtonSave.IsEnabled = true;
+            }
         }
     }
 }
