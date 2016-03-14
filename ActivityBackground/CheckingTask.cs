@@ -55,7 +55,8 @@ namespace ActivityBackground
 
             await SaveDailyToDb();
 
-            await SendNotificationToAzure(DateTime.Now.ToString(@"h\:mm tt"));
+            //await SendNotificationToAzure(DateTime.Now.ToString(@"h\:mm tt"));
+            await SendNotificationToAzure(DateTime.Now.ToString("g"));
 
             deferral.Complete();
         }
@@ -63,9 +64,9 @@ namespace ActivityBackground
         private async Task SaveDailyToDb()
         {
             var tonightZeroOclock = DateTime.Today.AddDays(1);
-            var tonight10MinBefore = tonightZeroOclock.AddMinutes(-15);
-            var tonight10MinAfter = tonightZeroOclock.AddMinutes(15);
-            if (DateTime.Now > tonight10MinBefore && DateTime.Now < tonight10MinAfter)
+            var tonight55MinBefore = tonightZeroOclock.AddMinutes(-55);
+            var tonight55MinAfter = tonightZeroOclock.AddMinutes(55);
+            if (DateTime.Now > tonight55MinBefore && DateTime.Now < tonight55MinAfter)
             {
                 //Debug.WriteLine("it is time to save DB");
                 await SaveTodayDb();
@@ -127,12 +128,12 @@ namespace ActivityBackground
                     .First(a => a.ActivityName == Activity.Unknown).ActivityTime;
             }
 
-            //Debug.WriteLine("Current, Active: " + currentActivieTime + ", Idle: " + currentIdleTime);
-            //Debug.WriteLine("Average, Active: " + avgActivieTime + ", Idle: " + avgIdleTime);
+            Debug.WriteLine("Current, Active: " + currentActivieTime + ", Idle: " + currentIdleTime);
+            Debug.WriteLine("Average, Active: " + avgActivieTime + ", Idle: " + avgIdleTime);
 
 
-            //SendNotification((timeSlot-1) + "~" + timeSlot
-            //                 + " Cur:" + (int)currentActivieTime.TotalMinutes + " Avg:" + (int)avgActivieTime.TotalMinutes);
+            SendNotification((timeSlot - 1) + "~" + timeSlot
+                             + " Cur:" + (int)currentActivieTime.TotalMinutes + " Avg:" + (int)avgActivieTime.TotalMinutes);
 
 
             //get the slidervalue from the textfile
@@ -144,6 +145,8 @@ namespace ActivityBackground
             Geoposition geoposition = await GetGeoLocation();
             latitude = geoposition.Coordinate.Point.Position.Latitude;
             longitude = geoposition.Coordinate.Point.Position.Longitude;
+
+            //Debug.WriteLine(latitude + ":" + longitude);
 
             CalculateStatus(avgActivieTime, currentActivieTime, settingZone, timeSlot);
         }

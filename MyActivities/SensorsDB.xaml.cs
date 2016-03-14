@@ -314,7 +314,7 @@ namespace MyActivities
             List<MyDuration> myIdle = new List<MyDuration>();
             foreach (var linedata in ActivityReader.Instance().ListData)
             {
-                if (DateTime.Now.Hour < linedata.Hour && ActivityReader.Instance().TimeWindow == 0)
+                if (DateTime.Now.Hour < linedata.Hour - 1 && ActivityReader.Instance().TimeWindow == 0)
                     break;
 
                 if (linedata.ActivityName == Activity.Idle)
@@ -325,8 +325,8 @@ namespace MyActivities
 
             var chart1Test = FindChildrenByControl<Chart>(Hub).FirstOrDefault(x => x.Name == "LineChart1");
 
-            (chart1Test.Series[0] as LineSeries).ItemsSource = myActive;
-            (chart1Test.Series[1] as LineSeries).ItemsSource = myIdle;
+            ((LineSeries)chart1Test.Series[0]).ItemsSource = myActive;
+            ((LineSeries)chart1Test.Series[1]).ItemsSource = myIdle;
         }
 
         private void DisplayPieChart()
@@ -373,26 +373,25 @@ namespace MyActivities
             };
 
             var pieChart = FindChildrenByControl<Chart>(Hub).FirstOrDefault(x => x.Name == "PieChart");
-            (pieChart.Series[0] as PieSeries).ItemsSource = myActive;
+            ((PieSeries)pieChart.Series[0]).ItemsSource = myActive;
         }
 
         private async Task DisplayLineChart2()
         {
             List<MyDuration> currentActive = new List<MyDuration>();
+
             foreach (var linedata in ActivityReader.Instance().ListData)
             {
-                if (linedata.ActivityName == Activity.Unknown)
-                {
-                    if (DateTime.Now.Hour < linedata.Hour)
-                        break;
+                if (DateTime.Now.Hour < linedata.Hour - 1)
+                    break;
 
+                if (linedata.ActivityName == Activity.Unknown)
                     currentActive.Add(new MyDuration() { Hour = linedata.Hour, ActivityTime = (int)linedata.ActivityTime.TotalMinutes });
-                }
             }
 
             var chart2Test = FindChildrenByControl<Chart>(Hub).FirstOrDefault(x => x.Name == "LineChart2");
 
-            (chart2Test.Series[0] as LineSeries).ItemsSource = currentActive;
+            ((LineSeries)chart2Test.Series[0]).ItemsSource = currentActive;
 
 
             //To replace sunday value = 7
@@ -408,13 +407,15 @@ namespace MyActivities
 
                 WeekHistory dayofWeek = await dbConn.GetWithChildrenAsync<WeekHistory>(myWeekday, true);
 
-                List<MyDuration> pastAvgIdle = new List<MyDuration>();
-                for (int i = 0; i < 48; i = i + 2)
+                List<MyDuration> pastAvgActive = new List<MyDuration>();
+                for (int i = 0; i < 48; i++)
                 {
-                    pastAvgIdle.Add(new MyDuration() { Hour = dayofWeek.DayHistorys[i].Hour, ActivityTime = (int)dayofWeek.DayHistorys[i].ActivityTime.TotalMinutes });
+                    if (i % 2 == 0)
+                        pastAvgActive.Add(new MyDuration() { Hour = dayofWeek.DayHistorys[i].Hour, ActivityTime = (int)dayofWeek.DayHistorys[i].ActivityTime.TotalMinutes });
                 }
 
-                (chart2Test.Series[1] as LineSeries).ItemsSource = pastAvgIdle;
+                ((LineSeries)chart2Test.Series[1]).ItemsSource = pastAvgActive;
+
             }
         }
 

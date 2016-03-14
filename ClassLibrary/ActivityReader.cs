@@ -288,6 +288,9 @@ namespace ClassLibrary
                         Activity currentActivity = _historyData[0].Mode;
                         DateTime currentDate = _historyData[0].Timestamp.DateTime;
 
+                        //reset 0 oclock to idle
+                        _historyData[0].Mode = Activity.Idle;
+
                         for (int index = 1; index < _historyData.Count; index++)
                         {
                             var item = _historyData[index];
@@ -309,7 +312,7 @@ namespace ClassLibrary
                                 var previousEvent = _historyData[indexOfHour - 1];
                                 var addedHour = new ActivityMonitorReading()
                                 {
-                                    Mode = previousEvent.Mode,
+                                    Mode = Activity.Idle,  //previousEvent.Mode,
                                     Timestamp = startDate.Date + TimeSpan.FromHours(hour)
                                 };
                                 _historyData.Insert(indexOfHour, addedHour);
